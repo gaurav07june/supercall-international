@@ -56,9 +56,11 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
     private CallSummaryDBHelper helper;
     private StringBuilder dialNumber;
     private final int CALL_PHONE_PERMISSION_REQ_CODE = 11;
+    private String dialNumberString;
     CallSummaryDBHelper dbHelper;
     Cursor userDetail;
     ContentResolver resolver;
+    private boolean isAccessSet;
 
     public KeypadFragment() {
         // Required empty public constructor
@@ -119,6 +121,8 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
         });
     }
     private void setViews(){
+        dialNumberString = "";
+        isAccessSet = false;
         dialNumber = new StringBuilder("");
         dialNumber.append(((MainActivity)getActivity()).dialNumber);
         binding.layoutKeypad.txtDialNumber.setText(dialNumber.toString());
@@ -187,16 +191,20 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                 break;
 
             case R.id.imgCallBtn:
+                if (dialNumber.toString().isEmpty()){
+                    Toast.makeText(getActivity(), getResources().getString(R.string.empty_number_error), Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 boolean isAccessSet = SharedPrefsUtils.getSharedPrefBoolean(getActivity(), AppConstants.preferences.PREF_NAME,
                         AppConstants.preferences.ACCESS_SETTING, false);
                 if (isAccessSet){
-                    Toast.makeText(getActivity(), "access setting is on", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Call via access number.", Toast.LENGTH_SHORT).show();
+                    dialNumberString = getResources().getString(R.string.access_number_value)+","+dialNumber.toString();
                 }else{
-                    if (dialNumber.toString().length() > 0){
-                        doDataBaseEntry();
-                    }
-                    checkPermissionForPhoneCall();
+                    dialNumberString = dialNumber.toString();
                 }
+                doDataBaseEntry();
+                checkPermissionForPhoneCall();
                 break;
         }
     }
@@ -237,7 +245,7 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                     new String[]{Manifest.permission.CALL_PHONE},
                     CALL_PHONE_PERMISSION_REQ_CODE);
         } else{
-            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + dialNumber.toString())));
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + dialNumberString)));
 
         }
     }
@@ -251,7 +259,7 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     try{
-                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + dialNumber.toString())));
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + dialNumberString)));
                     }catch (SecurityException e){
 
                     }

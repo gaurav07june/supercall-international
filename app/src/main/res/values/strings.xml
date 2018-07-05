@@ -23,6 +23,7 @@
     <string name="recent">RECENT</string>
     <string name="contacts">CONTACT</string>
     <string name="setting">SETTING</string>
+    <string name="empty_number_error">Please enter a phone number.</string>
 
     <string name="read_contact_permission">Permission is required to get contact list.</string>
     <string name="call_permission">Permission is required to make a phone call.</string>
