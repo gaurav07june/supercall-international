@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorSwitchThumbNormal">@color/colorBlackDim</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorRipple</item>
+    </style>
+
+
+    <style name="KeypadTextStyle" parent="android:Widget.TextView">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:paddingTop">@dimen/_15sdp</item>
+        <item name="android:paddingBottom">@dimen/_15sdp</item>
+        <item name="android:textColor">@color/text_color_selector</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="KeypadBtnStyle" parent="@style/Widget.AppCompat.Button.Borderless">
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_25sdp</item>
+        <item name="android:paddingTop">@dimen/_7sdp</item>
+        <item name="android:paddingBottom">@dimen/_7sdp</item>
+        <item name="android:textColor">@color/text_color_selector</item>
+        <item name="android:layout_margin">@dimen/_3sdp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/flat_keypad_btn</item>
+    </style>
+
+</resources>

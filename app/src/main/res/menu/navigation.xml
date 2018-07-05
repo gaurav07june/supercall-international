@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_info"
+        android:icon="@drawable/ic_info_outline"
+        android:title="@string/title_info" />
+    <item
+        android:id="@+id/navigation_recent"
+        android:icon="@drawable/ic_history"
+        android:title="@string/title_recent" />
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/ic_contact_phone"
+        android:title="@string/title_contacts" />
+
+    <item
+        android:id="@+id/navigation_keypad"
+        android:icon="@drawable/ic_dialpad"
+        android:title="@string/title_keypad" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/title_setting" />
+</menu>

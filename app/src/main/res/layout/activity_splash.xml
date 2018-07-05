@@ -1,0 +1,16 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    tools:context="com.example.gauravsingh.myapplication.activity.SplashActivity">
+
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_centerInParent="true"
+       android:padding="@dimen/_30sdp"
+       android:layout_height="wrap_content"
+       app:srcCompat = "@drawable/super_call_icon"/>
+
+</RelativeLayout>

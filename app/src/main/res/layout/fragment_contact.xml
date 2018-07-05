@@ -1,0 +1,41 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <FrameLayout
+            android:layout_below="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorDimWhite"
+            android:id="@+id/frag">
+
+            <TextView
+                android:id="@+id/srchHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search.."
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/colorBlack"
+                android:layout_gravity="center" />
+
+
+            <SearchView
+                android:background="@color/colorDimWhite"
+                android:padding="@dimen/_3sdp"
+                android:id="@+id/searchView"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:layout_height="wrap_content"/>
+        </FrameLayout>
+
+        <ListView
+            android:layout_below="@+id/frag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/contacts_list"/>
+
+    </RelativeLayout>
+</layout>

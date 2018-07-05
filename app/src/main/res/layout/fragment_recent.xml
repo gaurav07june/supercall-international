@@ -1,0 +1,35 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context="com.example.gauravsingh.myapplication.fragment.RecentFragment">
+
+      <ListView
+          android:layout_below="@+id/txtClearAll"
+          android:id="@+id/listCallHistory"
+          android:layout_marginTop="@dimen/_16sdp"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+      </ListView>
+        <TextView
+            android:id="@+id/txtClearAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear all"
+            android:textColor="@color/colorBlack"
+            android:drawableLeft="@drawable/ic_cancel"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/_5sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:clickable="true"
+            android:visibility="gone"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:textSize="@dimen/_17sdp"/>
+
+    </RelativeLayout>
+</layout>

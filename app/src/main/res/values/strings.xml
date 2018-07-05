@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Super Call</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="title_info">Info</string>
+    <string name="title_recent">Recent</string>
+    <string name="title_contacts">Contacts</string>
+    <string name="title_keypad">Keypad</string>
+    <string name="title_setting">Setting</string>
+
+    <string name="access_number">Access Number</string>
+    <string name="access_number_value">08706384000</string>
+    <string name="access_setting">Access setting</string>
+    <string name="user_guide">User guide</string>
+    <string name="tell_friend">Tell friends</string>
+    <string name="contact_us">Contact us</string>
+    <string name="customer_service">Customer service</string>
+    <string name="version">Version %s</string>
+    <string name="version_value">1.0</string>
+    <string name="free_call">Free call</string>
+    <string name="recent">RECENT</string>
+    <string name="contacts">CONTACT</string>
+    <string name="setting">SETTING</string>
+
+    <string name="read_contact_permission">Permission is required to get contact list.</string>
+    <string name="call_permission">Permission is required to make a phone call.</string>
+
+    <string name="info_title">Call abroad for free in 2 easy steps:</string>
+    <string name="info_desc">1: Get a tariff or a bolt from you existing provider that gives free calls to 0807 numbers.\n\n 2: Dial
+    your international number though this App or direct through your mobile phone book with in app. This app will automatically dial our
+    0870 access number and then dial your international number when cal hits our server. The entire process will cost you nothing.
+        Talk for free.</string>
+    <string name="toolbar_header_content">FREE INTERNATIONAL CALLS FROM \n THE UK TO OVER 150 COUNTRIES</string>
+    <string name="title_activity_splash">Splash</string>
+
+</resources>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1.7"
+                android:background="@drawable/flat_corner_layout"
+                android:gravity="center">
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        android:id="@+id/txtDialNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="@dimen/_20sdp"
+                        android:textStyle="bold"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:maxLines="1"
+                        android:textColor="@color/colorBlackDim"/>
+
+                </HorizontalScrollView>
+            </LinearLayout>
+
+
+
+
+            <ImageView
+                android:id="@+id/imgClearNumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.3"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:padding="@dimen/_7sdp"
+                android:tint="@color/colorRed"
+                app:srcCompat="@drawable/ic_cancel" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/txtKeyOne"
+                android:text="1"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyTwo"
+                android:text="2"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyThree"
+                android:text="3"
+                style="@style/KeypadBtnStyle"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/txtKeyFour"
+                android:text="4"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyFive"
+                android:text="5"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeySix"
+                android:text="6"
+                style="@style/KeypadBtnStyle"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/txtKeySeven"
+                android:text="7"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyEight"
+                android:text="8"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyNine"
+                android:text="9"
+                style="@style/KeypadBtnStyle"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/txtKeyStar"
+                android:text="*"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyZero"
+                android:text="0"
+                style="@style/KeypadBtnStyle"
+                />
+            <Button
+                android:id="@+id/txtKeyHash"
+                android:text="#"
+                style="@style/KeypadBtnStyle"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgCallBtn"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center"
+            android:tint="@color/colorBlue"
+            android:scaleType="centerInside"
+            android:clickable="true"
+            android:background="@drawable/call_btn_bg"
+            android:layout_margin="@dimen/_10sdp"/>
+
+    </LinearLayout>
+</layout>

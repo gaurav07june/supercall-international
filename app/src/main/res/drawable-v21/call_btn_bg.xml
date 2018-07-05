@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/colorRippleGreen">
+    <item>
+        <selector xmlns:android="http://schemas.android.com/apk/res/android" >
+            <item
+                android:drawable="@drawable/call_button"
+                android:state_checked="false"/>
+            <item
+                android:drawable="@drawable/call_button"
+                android:state_checked="true" />
+            <item
+                android:drawable="@drawable/call_button" />
+
+        </selector>
+    </item>
+
+</ripple>

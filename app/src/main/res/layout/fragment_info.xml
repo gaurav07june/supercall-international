@@ -1,0 +1,80 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context="com.example.gauravsingh.myapplication.fragment.InfoFragment">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarInfo"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationContentDescription="@string/abc_action_bar_up_description"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        
+        android:elevation="@dimen/_4sdp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:scaleType="centerInside"
+                app:srcCompat = "@drawable/super_call_international"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold|italic"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/colorYellow"
+                    android:text="@string/toolbar_header_content"/>
+        </LinearLayout>
+
+        
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_below="@+id/toolbarInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/_16sdp"
+        android:paddingRight="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                app:srcCompat = "@drawable/super_call_man"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlackDim"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/info_title"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlackDim"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/info_desc"/>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
+</layout>
