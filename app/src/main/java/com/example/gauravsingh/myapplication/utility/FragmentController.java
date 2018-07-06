@@ -24,7 +24,7 @@ public class FragmentController {
     public static final void addInfoFragment(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(InfoFragment.class.getName());
         if (fragment==null)
         {
@@ -43,7 +43,7 @@ public class FragmentController {
     public static final void addRecentFragment(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(RecentFragment.class.getName());
         if (fragment==null)
         {
@@ -65,7 +65,7 @@ public class FragmentController {
     {
 
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(ContactFragment.class.getName());
         if (fragment==null)
         {
@@ -85,7 +85,7 @@ public class FragmentController {
     {
 
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(KeypadFragment.class.getName());
         if (fragment==null)
         {
@@ -105,7 +105,7 @@ public class FragmentController {
     {
 
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         Fragment fragment = activity.getSupportFragmentManager().findFragmentByTag(SettingFragment.class.getName());
         if (fragment==null)
         {
@@ -125,7 +125,7 @@ public class FragmentController {
     public static final void replaceInfoFrag(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         fragmentTransaction.replace(container, InfoFragment.newInstance("",""));
         fragmentTransaction.commit();
 
@@ -133,7 +133,7 @@ public class FragmentController {
     public static final void replaceRecentFrag(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         fragmentTransaction.replace(container, RecentFragment.newInstance("",""), AppConstants.fragments.RECENT_FRAG);
         fragmentTransaction.commit();
 
@@ -141,7 +141,7 @@ public class FragmentController {
     public static final void replaceContactFrag(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         fragmentTransaction.replace(container, ContactFragment.newInstance("",""));
         fragmentTransaction.commit();
 
@@ -149,7 +149,7 @@ public class FragmentController {
     public static final void replaceKeypadFrag(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
         fragmentTransaction.replace(container, KeypadFragment.newInstance("",""));
         fragmentTransaction.commit();
 
@@ -157,7 +157,7 @@ public class FragmentController {
     public static final void replaceSettingFrag(AppCompatActivity activity,int container)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fragmentTransaction.replace(container, SettingFragment.newInstance("",""));
         fragmentTransaction.commit();
 
@@ -167,7 +167,7 @@ public class FragmentController {
     public static final void showFragmentIfHidden(AppCompatActivity activity)
     {
         FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+
        List<Fragment> fragments = activity.getSupportFragmentManager().getFragments();
         if (fragments!=null && fragments.size()>0)
         {

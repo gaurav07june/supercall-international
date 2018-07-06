@@ -22,6 +22,39 @@
         android:gravity="center"
         android:elevation="@dimen/_4sdp"
         android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/lnrlay_info_toolbar_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:scaleType="centerInside"
+                app:srcCompat = "@drawable/super_call_international"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold|italic"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/colorYellow"
+                android:text="@string/toolbar_header_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnrlay_keypad_toolbar_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:scaleType="fitXY"
+                app:srcCompat = "@drawable/super_call_international"/>
+        </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
     <FrameLayout

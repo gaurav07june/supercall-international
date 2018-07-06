@@ -1,47 +1,107 @@
 package com.example.gauravsingh.myapplication.activity;
 
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.gauravsingh.myapplication.R;
-import com.example.gauravsingh.myapplication.databinding.ActivityMainBinding;
+import com.example.gauravsingh.myapplication.adapter.ScreenSlidePagerAdapter;
+import com.example.gauravsingh.myapplication.databinding.ActivityHomeBinding;
+import com.example.gauravsingh.myapplication.fragment.InfoFragment;
 import com.example.gauravsingh.myapplication.fragment.RecentFragment;
 import com.example.gauravsingh.myapplication.utility.AppConstants;
 import com.example.gauravsingh.myapplication.utility.BottomNavigationViewHelper;
 import com.example.gauravsingh.myapplication.utility.FragmentController;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
-    private ActivityMainBinding binding;
+    private static final int NUM_PAGES = 5;
+
+    private PagerAdapter pagerAdapter;
+    private ActivityHomeBinding binding;
     public BottomNavigationView navigationView;
     public static String dialNumber;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        navigationView = findViewById(R.id.navigation);
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initView();
         setClickListener();
+        setView();
+
     }
+
+    private void initView(){
+        dialNumber = "";
+        BottomNavigationViewHelper.disableShiftMode(binding.navigation);
+       // FragmentController.replaceInfoFrag(this, R.id.frag_container);
+        binding.toolbar.setVisibility(View.GONE);
+    }
+
+
+    private void setClickListener(){
+        binding.navigation.setOnNavigationItemSelectedListener(this);
+
+    }
+
+    private void setView(){
+        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        binding.fragContainer.setAdapter(pagerAdapter);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.navigation_info:
+                binding.toolbar.setVisibility(View.GONE);
+                binding.fragContainer.setCurrentItem(0);
+                //FragmentController.replaceInfoFrag(this, R.id.frag_container);
+                return true;
+            case R.id.navigation_recent:
+                binding.toolbar.setVisibility(View.VISIBLE);
+                setToolbar(getResources().getString(R.string.recent));
+                binding.fragContainer.setCurrentItem(1);
+                //FragmentController.replaceRecentFrag(this, R.id.frag_container);
+                return true;
+            case R.id.navigation_contact:
+                binding.toolbar.setVisibility(View.VISIBLE);
+                setToolbar(getResources().getString(R.string.contacts));
+                binding.fragContainer.setCurrentItem(2);
+                //FragmentController.replaceContactFrag(this, R.id.frag_container);
+                return true;
+            case R.id.navigation_keypad:
+                binding.toolbar.setVisibility(View.GONE);
+                binding.fragContainer.setCurrentItem(3);
+                //FragmentController.replaceKeypadFrag(this, R.id.frag_container);
+                return true;
+            case R.id.navigation_setting:
+                binding.toolbar.setVisibility(View.VISIBLE);
+                setToolbar(getResources().getString(R.string.setting));
+                binding.fragContainer.setCurrentItem(4);
+                //FragmentController.replaceSettingFrag(this, R.id.frag_container);
+                return true;
+        }
+        return false;
+
+    }
+
     public void setToolbar(String title) {
 
         setSupportActionBar(binding.toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
+        binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         actionBar.setTitle(title);
         binding.toolbar.inflateMenu(R.menu.tool_menu);
-        binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,70 +110,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         });
 
     }
-
-    private void initView(){
-        dialNumber = "";
-        BottomNavigationViewHelper.disableShiftMode(binding.navigation);
-        FragmentController.replaceInfoFrag(this, R.id.frag_container);
-        binding.lnrlayInfoToolbarLay.setVisibility(View.VISIBLE);
-        binding.lnrlayKeypadToolbarLay.setVisibility(View.GONE);
-        setToolbar("");
-    }
-
-
-    private void setClickListener(){
-        binding.navigation.setOnNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.navigation_info:
-                //binding.toolbar.setVisibility(View.GONE);
-                binding.lnrlayInfoToolbarLay.setVisibility(View.VISIBLE);
-                binding.lnrlayKeypadToolbarLay.setVisibility(View.GONE);
-                binding.toolbar.getNavigationIcon().setVisible(false, true);
-                setToolbar("");
-                FragmentController.replaceInfoFrag(this, R.id.frag_container);
-                return true;
-            case R.id.navigation_recent:
-                binding.toolbar.setVisibility(View.VISIBLE);
-                binding.lnrlayInfoToolbarLay.setVisibility(View.GONE);
-                binding.lnrlayKeypadToolbarLay.setVisibility(View.GONE);
-                setToolbar(getResources().getString(R.string.recent));
-                FragmentController.replaceRecentFrag(this, R.id.frag_container);
-                return true;
-            case R.id.navigation_contact:
-                binding.lnrlayInfoToolbarLay.setVisibility(View.GONE);
-                binding.lnrlayKeypadToolbarLay.setVisibility(View.GONE);
-                binding.toolbar.setVisibility(View.VISIBLE);
-                setToolbar(getResources().getString(R.string.contacts));
-                FragmentController.replaceContactFrag(this, R.id.frag_container);
-                return true;
-            case R.id.navigation_keypad:
-                binding.lnrlayInfoToolbarLay.setVisibility(View.GONE);
-                binding.lnrlayKeypadToolbarLay.setVisibility(View.VISIBLE);
-                //binding.toolbar.setVisibility(View.GONE);
-                setToolbar("");
-                FragmentController.replaceKeypadFrag(this, R.id.frag_container);
-                return true;
-            case R.id.navigation_setting:
-                binding.lnrlayInfoToolbarLay.setVisibility(View.GONE);
-                binding.lnrlayKeypadToolbarLay.setVisibility(View.GONE);
-                binding.toolbar.setVisibility(View.VISIBLE);
-                setToolbar(getResources().getString(R.string.setting));
-                FragmentController.replaceSettingFrag(this, R.id.frag_container);
-                return true;
-        }
-        return false;
-
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (binding.fragContainer.getCurrentItem() == 0) {
+            super.onBackPressed();
+        } else {
+            binding.fragContainer.setCurrentItem(binding.fragContainer.getCurrentItem() - 1);
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -126,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -137,18 +145,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (binding.navigation.getSelectedItemId() == R.id.navigation_info){
-
-            super.onBackPressed();
-        }else{
-            setToolbar("");
-            FragmentController.replaceInfoFrag(this, R.id.frag_container);
-            binding.navigation.setSelectedItemId(R.id.navigation_info);
         }
     }
 }
