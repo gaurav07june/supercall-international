@@ -117,8 +117,7 @@ public class ContactFragment extends Fragment{
     public void checkReadContactPermission(){
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.READ_CONTACTS},
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},
                     READ_CONTACT_PERMISSION_REQ);
         } else{
             getContactInfoList();
@@ -130,7 +129,6 @@ public class ContactFragment extends Fragment{
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
             case READ_CONTACT_PERMISSION_REQ: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getContactInfoList();
@@ -141,6 +139,12 @@ public class ContactFragment extends Fragment{
                 return;
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 
     private void getContactInfoList(){
