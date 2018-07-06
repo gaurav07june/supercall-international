@@ -59,6 +59,7 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
     private String dialNumberString;
     CallSummaryDBHelper dbHelper;
     Cursor userDetail;
+    private boolean isClickedToCall = false;
     ContentResolver resolver;
     private boolean isAccessSet;
 
@@ -123,6 +124,7 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
     private void setViews(){
         dialNumberString = "";
         isAccessSet = false;
+        isClickedToCall = false;
         dialNumber = new StringBuilder("");
         dialNumber.append(((MainActivity)getActivity()).dialNumber);
         binding.layoutKeypad.txtDialNumber.setText(dialNumber.toString());
@@ -204,8 +206,18 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                     dialNumberString = dialNumber.toString();
                 }
                 doDataBaseEntry();
+                isClickedToCall = true;
                 checkPermissionForPhoneCall();
                 break;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isClickedToCall){
+            checkPermissionForPhoneCall();
+            isClickedToCall = false;
         }
     }
 
@@ -241,8 +253,7 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
 
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.CALL_PHONE},
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE},
                     CALL_PHONE_PERMISSION_REQ_CODE);
         } else{
             startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + dialNumberString)));
