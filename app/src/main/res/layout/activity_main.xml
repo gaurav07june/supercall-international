@@ -30,15 +30,15 @@
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:scaleType="centerInside"
-                app:srcCompat = "@drawable/super_call_international"/>
-            <TextView
+                app:srcCompat = "@drawable/supercall_top_img"/>
+            <com.example.gauravsingh.myapplication.customui.SuperTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textStyle="bold|italic"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_16sdp"
                 android:textColor="@color/colorYellow"
                 android:text="@string/toolbar_header_content"/>
         </LinearLayout>
@@ -47,13 +47,13 @@
             android:id="@+id/lnrlay_keypad_toolbar_lay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
+            android:visibility="visible"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="@dimen/_80sdp"
                 android:scaleType="fitXY"
-                app:srcCompat = "@drawable/super_call_international"/>
+                app:srcCompat = "@drawable/supercall_top_img"/>
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>

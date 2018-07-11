@@ -95,12 +95,12 @@ public class CallHistoryAdapter extends BaseAdapter{
             if (data.getImage() != null) {
                 v.imageView.setImageBitmap(data.getImage());
             } else {
-                v.imageView.setImageResource(R.drawable.contact_icon);
+                v.imageView.setImageResource(R.drawable.super_call_man);
             }
 
         } catch (OutOfMemoryError e) {
 
-            v.imageView.setImageDrawable(this._c.getDrawable(R.drawable.contact_icon));
+            v.imageView.setImageDrawable(this._c.getDrawable(R.drawable.super_call_man));
             e.printStackTrace();
         }
 

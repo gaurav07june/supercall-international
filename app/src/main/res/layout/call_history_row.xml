@@ -18,7 +18,7 @@
             android:layout_width="@dimen/_65sdp"
             android:layout_height="@dimen/_65sdp"
             android:layout_marginBottom="@dimen/_5sdp"
-            app:srcCompat = "@drawable/contact_icon"
+            app:srcCompat = "@drawable/super_call_man"
             />
 
         <RelativeLayout

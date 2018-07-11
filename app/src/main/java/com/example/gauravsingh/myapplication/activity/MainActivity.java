@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         navigationView = findViewById(R.id.navigation);
-
         initView();
         setClickListener();
     }
@@ -40,14 +39,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setTitle(title);
+
         binding.toolbar.inflateMenu(R.menu.tool_menu);
-        binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        /*binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         binding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
-        });
+        });*/
 
     }
 
@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 //binding.toolbar.setVisibility(View.GONE);
                 binding.lnrlayInfoToolbarLay.setVisibility(View.VISIBLE);
                 binding.lnrlayKeypadToolbarLay.setVisibility(View.GONE);
-                binding.toolbar.getNavigationIcon().setVisible(false, true);
                 setToolbar("");
                 FragmentController.replaceInfoFrag(this, R.id.frag_container);
                 return true;

@@ -20,6 +20,7 @@
     <string name="version">Version %s</string>
     <string name="version_value">1.0</string>
     <string name="free_call">Free call</string>
+    <string name="free_call_number">02033971435</string>
     <string name="recent">RECENT</string>
     <string name="contacts">CONTACT</string>
     <string name="setting">SETTING</string>
@@ -29,10 +30,9 @@
     <string name="call_permission">Permission is required to make a phone call.</string>
 
     <string name="info_title">Call abroad for free in 2 easy steps:</string>
-    <string name="info_desc">1: Get a tariff or a bolt from you existing provider that gives free calls to 0807 numbers.\n\n 2: Dial
-    your international number though this App or direct through your mobile phone book with in app. This app will automatically dial our
-    0870 access number and then dial your international number when cal hits our server. The entire process will cost you nothing.
-        Talk for free.</string>
+    <string name="info_desc">get a tariff or bolt on from your existing provider that gives free call to 0870 numbers.
+        then simply call abroad.\n</string>
+    <string name="info_bottom"><font color = '#0889AD'>click here</font> for more info and to see countries we cover.</string>
     <string name="toolbar_header_content">FREE INTERNATIONAL CALLS FROM \n THE UK TO OVER 150 COUNTRIES</string>
     <string name="title_activity_splash">Splash</string>
 

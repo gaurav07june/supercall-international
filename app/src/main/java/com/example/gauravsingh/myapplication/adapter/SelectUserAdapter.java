@@ -88,7 +88,7 @@ public class SelectUserAdapter extends BaseAdapter{
             if (data.getThumb() != null) {
                 v.imageView.setImageBitmap(data.getThumb());
             } else {
-                v.imageView.setImageResource(R.drawable.contact_icon);
+                v.imageView.setImageResource(R.drawable.super_call_man);
             }
             // Seting round image
             /*Bitmap bm = BitmapFactory.decodeResource(view.getResources(), R.drawable.contact_icon); // Load default image
@@ -96,7 +96,7 @@ public class SelectUserAdapter extends BaseAdapter{
             v.imageView.setImageDrawable(image);*/
         } catch (OutOfMemoryError e) {
             // Add default picture
-            v.imageView.setImageDrawable(this._c.getDrawable(R.drawable.contact_icon));
+            v.imageView.setImageDrawable(this._c.getDrawable(R.drawable.super_call_man));
             e.printStackTrace();
         }
 
