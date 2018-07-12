@@ -70,8 +70,8 @@ public class CallHistoryAdapter extends BaseAdapter{
         v = new ViewHolder();
         v.name = (TextView) view.findViewById(R.id.txtUserName);
         v.number = (TextView) view.findViewById(R.id.txtNumber);
-        v.status = (TextView) view.findViewById(R.id.txtStatus);
-        v.duration = (TextView) view.findViewById(R.id.txtCallDuration);
+        v.callDate = (TextView) view.findViewById(R.id.txtCallDate);
+        v.callTimeInstant = (TextView) view.findViewById(R.id.txtCallTimeInstant);
         v.callTime = (TextView) view.findViewById(R.id.txtCallTime);
         v.separator = (View) view.findViewById(R.id.separator);
         v.imageView = (ImageView) view.findViewById(R.id.imgUser);
@@ -85,8 +85,8 @@ public class CallHistoryAdapter extends BaseAdapter{
         final CallHistory data = (CallHistory) _data.get(i);
        v.name.setText(data.getName());
         v.number.setText(data.getNumber());
-        v.status.setText(data.getCallstatus());
-        v.duration.setText(data.getCallduration());
+        v.callDate.setText(data.getCallDate());
+        v.callTimeInstant.setText(data.getCallTimeInstance());
         v.callTime.setText(Util.timeAgoFormate(data.getCalltime()));
 
         //Set image if exists
@@ -124,7 +124,7 @@ public class CallHistoryAdapter extends BaseAdapter{
     }
     static class ViewHolder {
         ImageView imageView;
-        TextView name, number, status, duration, callTime;
+        TextView name, number, callDate, callTimeInstant, callTime;
         View separator;
     }
     public void clearAll(){

@@ -99,14 +99,12 @@ public class ContactFragment extends Fragment{
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // TODO Auto-generated method stub
 
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // TODO Auto-generated method stub
                 adapter.filter(newText);
                 return false;
             }

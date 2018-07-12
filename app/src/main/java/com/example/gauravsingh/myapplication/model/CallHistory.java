@@ -8,8 +8,8 @@ public class CallHistory {
     private String name;
     private String number;
     private String calltime;
-    private String callduration;
-    private String callstatus;
+    private String callTimeInstance;
+    private String callDate;
 
     public Bitmap getImage() {
         return image;
@@ -43,19 +43,19 @@ public class CallHistory {
         this.calltime = calltime;
     }
 
-    public String getCallduration() {
-        return callduration;
+    public String getCallTimeInstance() {
+        return callTimeInstance;
     }
 
-    public void setCallduration(String callduration) {
-        this.callduration = callduration;
+    public void setCallTimeInstance(String callTimeInstance) {
+        this.callTimeInstance = callTimeInstance;
     }
 
-    public String getCallstatus() {
-        return callstatus;
+    public String getCallDate() {
+        return callDate;
     }
 
-    public void setCallstatus(String callstatus) {
-        this.callstatus = callstatus;
+    public void setCallDate(String callDate) {
+        this.callDate = callDate;
     }
 }

@@ -1,13 +1,20 @@
 package com.example.gauravsingh.myapplication.fragment;
 
+import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +34,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
     private FragmentSettingBinding binding;
+    private final int CALL_PHONE_PERMISSION_REQ_CODE =  101;
+
 
 
     public SettingFragment() {
@@ -96,33 +105,84 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.imgUserGuide:
-                String url = "http://supercallinternational.com/";
+                String url = getResources().getString(R.string.super_call_link);
                 Uri webpage = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
                 if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getActivity(), "action can not be performed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.imgTellFriends:
+                /*TODO format the mail content*/
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
-                share.putExtra(Intent.EXTRA_SUBJECT, "Super International Call");
-                share.putExtra(Intent.EXTRA_TEXT, "http://supercallinternational.com/");
+                share.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
+                String shareContent = getResources().getString(R.string.super_call_share_content);
+                String shareLink = getResources().getString(R.string.super_call_link);
+
+                SpannableString spannableString = new SpannableString(shareContent+shareLink);
+                spannableString.setSpan(new ForegroundColorSpan(Color.RED), 0, shareContent.length(), 0);
+                share.putExtra(Intent.EXTRA_TEXT, spannableString);
                 if (share.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(Intent.createChooser(share, "Share App"));
                 }else{
-                    Toast.makeText(getActivity(), "action can not be performed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
                 }
 
                 break;
             case R.id.imgContact:
-                Toast.makeText(getActivity(), "under development", Toast.LENGTH_SHORT).show();
+
+                Intent mailIntent = new Intent(Intent.ACTION_SENDTO);
+                mailIntent.setData(Uri.parse("mailto:"));
+                String[] addresses = {getResources().getString(R.string.super_call_email)};
+                mailIntent.putExtra(Intent.EXTRA_EMAIL, addresses);
+                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+                if (mailIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(mailIntent);
+                }else{
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.txtFreeCall:
-                Toast.makeText(getActivity(), "under development", Toast.LENGTH_SHORT).show();
+                checkPermissionForPhoneCall();
                 break;
+        }
+    }
+
+    private void checkPermissionForPhoneCall() {
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CALL_PHONE},
+                    CALL_PHONE_PERMISSION_REQ_CODE);
+        } else{
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getResources().getString(R.string.free_call_number))));
+
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case CALL_PHONE_PERMISSION_REQ_CODE:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    try{
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + getResources().getString(R.string.free_call_number))));
+                    }catch (SecurityException e){
+
+                    }
+
+                } else {
+                    Toast.makeText(getActivity(), R.string.call_permission,Toast.LENGTH_SHORT).show();
+                }
+                return;
+
         }
     }
 

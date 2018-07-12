@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Super Call</string>
+    <string name="app_name">Super Call International</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -30,10 +30,15 @@
     <string name="call_permission">Permission is required to make a phone call.</string>
 
     <string name="info_title">Call abroad for free in 2 easy steps:</string>
-    <string name="info_desc">get a tariff or bolt on from your existing provider that gives free call to 0870 numbers.
-        then simply call abroad.\n</string>
-    <string name="info_bottom"><font color = '#0889AD'>click here</font> for more info and to see countries we cover.</string>
+    <string name="info_desc">Get a tariff or bolt on from your existing provider that gives free call to 0870 numbers.
+        Then simply call abroad.\n</string>
+    <string name="info_bottom">Click here for more info and to see countries we cover.</string>
     <string name="toolbar_header_content">FREE INTERNATIONAL CALLS FROM \n THE UK TO OVER 150 COUNTRIES</string>
     <string name="title_activity_splash">Splash</string>
+
+    <string name="super_call_link">http://supercallinternational.com/</string>
+    <string name="super_call_share_content">Free international calls from landlines or mobile. Go to..\n</string>
+    <string name="super_call_email">info@supercallinternational.com</string>
+    <string name="no_app_found_error">No app found to perform this action.</string>
 
 </resources>

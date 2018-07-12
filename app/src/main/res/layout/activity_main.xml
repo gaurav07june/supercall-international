@@ -47,7 +47,7 @@
             android:id="@+id/lnrlay_keypad_toolbar_lay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible"
+            android:visibility="gone"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"

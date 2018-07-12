@@ -58,18 +58,8 @@
                 android:layout_height="@dimen/_120sdp"
                 app:srcCompat = "@drawable/super_call_man"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorBlackDim"
-                android:textSize="@dimen/_16sdp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:text="@string/info_title"/>
             <com.example.gauravsingh.myapplication.customui.SuperTextView
                 android:gravity="center_horizontal"
-                android:textAllCaps="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorBlackDim"
@@ -80,11 +70,9 @@
             <com.example.gauravsingh.myapplication.customui.SuperTextView
                 android:id="@+id/txtInfoBottom"
                 android:gravity="center_horizontal"
-                android:textAllCaps="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_14sdp"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/colorBlackDim"
                 app:fontName="Museo_Slab_4.otf"
                 />

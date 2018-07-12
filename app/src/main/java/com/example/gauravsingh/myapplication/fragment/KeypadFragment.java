@@ -241,9 +241,11 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
         Date dateTime = Calendar.getInstance().getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String callTime = sdf.format(dateTime);
-        String callDuration = "";
-        String callStatus = "";
-        String value[] = {contactName, contactNumber, contactImage, callTime, callDuration, callStatus};
+        SimpleDateFormat sdf1 = new SimpleDateFormat("EEEE, MMMM dd yyyy");
+        String callDate = sdf1.format(dateTime);
+        SimpleDateFormat sdf2 = new SimpleDateFormat("h:mmaa");
+        String callTimeInstant = sdf2.format(dateTime);
+        String value[] = {contactName, contactNumber, contactImage, callTime,  callTimeInstant, callDate,};
         DataBaseEntry entryTask = new DataBaseEntry();
         entryTask.execute(value);
 
@@ -301,8 +303,8 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                     values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_NUMBER, params[1]);
                     values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_IMAGE, params[2]);
                     values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME, params[3]);
-                    values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DURATION, params[4]);
-                    values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_STATUS, params[5]);
+                    values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME_INSTANCE, params[4]);
+                    values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DATE, params[5]);
                     newRowId = db.insert(CallSummaryContract.CallEntry.TABLE_NAME, null, values);
                 }else{
                     ContentValues values = new ContentValues();
@@ -320,8 +322,8 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                         values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_NUMBER, phoneNumber);
                         values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_IMAGE, image_thumb);
                         values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME, params[3]);
-                        values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DURATION, params[4]);
-                        values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_STATUS, params[5]);
+                        values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME_INSTANCE, params[4]);
+                        values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DATE, params[5]);
 
                     }
                     newRowId = db.insert(CallSummaryContract.CallEntry.TABLE_NAME, null, values);
@@ -333,8 +335,8 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
                 values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_NUMBER, params[1]);
                 values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_IMAGE, params[2]);
                 values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME, params[3]);
-                values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DURATION, params[4]);
-                values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_STATUS, params[5]);
+                values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME_INSTANCE, params[4]);
+                values.put(CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DATE, params[5]);
                 newRowId = db.insert(CallSummaryContract.CallEntry.TABLE_NAME, null, values);
                 Log.e("Cursor close 1", "----------------");
             }
@@ -344,8 +346,6 @@ public class KeypadFragment extends Fragment implements View.OnClickListener{
         protected void onPostExecute(Long rowId) {
             super.onPostExecute(rowId);
             //Toast.makeText(getActivity(),"row inserted"+ rowId, Toast.LENGTH_SHORT).show();
-
-
         }
     }
     @Override

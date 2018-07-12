@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -15,6 +16,8 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.URLSpan;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,37 +61,35 @@ public class InfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false);
         View view = binding.getRoot();
-
         setView();
         return view;
     }
 
     private void setView(){
-        Spannable ss = new SpannableString(getResources().getString(R.string.info_bottom));
+        SpannableString spannableString = new SpannableString(getResources().getString(R.string.info_bottom));
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View textView) {
-                String url = "http://supercallinternational.com/";
+            public void onClick(View widget) {
+                String url = getResources().getString(R.string.super_call_link);
                 Uri webpage = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
                 if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getActivity(), "action can not be performed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
                 }
-            }
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(false);
             }
         };
 
-        ss.setSpan(clickableSpan, 1, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        binding.txtInfoBottom.setText(ss);
+        spannableString.setSpan(clickableSpan, 0, 10, 0);
+        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getActivity(), R.color.colorBlueDim)), 0, 10, 0);
+        // this step is mandated for the url and clickable styles.
         binding.txtInfoBottom.setMovementMethod(LinkMovementMethod.getInstance());
-        binding.txtInfoBottom.setHighlightColor(ContextCompat.getColor(getActivity(), R.color.colorBlueDim));
-        binding.txtInfoBottom.setEnabled(true);
+        // make it neat
+        binding.txtInfoBottom.setGravity(Gravity.CENTER);
+        binding.txtInfoBottom.setBackgroundColor(Color.WHITE);
+        binding.txtInfoBottom.setText(spannableString);
+
     }
 
 }

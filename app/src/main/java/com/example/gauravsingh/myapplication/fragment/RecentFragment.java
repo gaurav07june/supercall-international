@@ -112,8 +112,8 @@ public class RecentFragment extends Fragment implements View.OnClickListener{
                     CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_NUMBER,
                     CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_IMAGE,
                     CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME,
-                    CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DURATION,
-                    CallSummaryContract.CallEntry.COLUMN_NAME_CALL_STATUS
+                    CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME_INSTANCE,
+                    CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DATE
             };
 
             // Filter results WHERE "title" = 'My Title'
@@ -146,10 +146,10 @@ public class RecentFragment extends Fragment implements View.OnClickListener{
                         (CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_IMAGE));
                 String callTime = cursor.getString(cursor.getColumnIndexOrThrow
                         (CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME));
-                String callDuration = cursor.getString(cursor.getColumnIndexOrThrow
-                        (CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DURATION));
-                String callStatus = cursor.getString(cursor.getColumnIndexOrThrow
-                        (CallSummaryContract.CallEntry.COLUMN_NAME_CALL_STATUS));
+                String callTimeInstance = cursor.getString(cursor.getColumnIndexOrThrow
+                        (CallSummaryContract.CallEntry.COLUMN_NAME_CALL_TIME_INSTANCE));
+                String callDate = cursor.getString(cursor.getColumnIndexOrThrow
+                        (CallSummaryContract.CallEntry.COLUMN_NAME_CALL_DATE));
                 Bitmap bit_thumb = null;
                 try {
                     if (image != null) {
@@ -164,8 +164,8 @@ public class RecentFragment extends Fragment implements View.OnClickListener{
                 callHistory.setNumber(number);
                 callHistory.setImage(bit_thumb);
                 callHistory.setCalltime(callTime);
-                callHistory.setCallduration(callDuration);
-                callHistory.setCallstatus(callStatus);
+                callHistory.setCallTimeInstance(callTimeInstance);
+                callHistory.setCallDate(callDate);
                 callHistoryArrayList.add(callHistory);
             }
             cursor.close();

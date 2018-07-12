@@ -45,19 +45,19 @@
                 android:layout_below="@+id/txtUserName"/>
 
             <TextView
-                android:id="@+id/txtStatus"
+                android:id="@+id/txtCallDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtNumber"
-                android:text="(status)"
+
                 android:textSize="@dimen/_11sdp"
-                android:textColor="@color/colorRipple"/>
+                android:textColor="@color/colorBlueDim"/>
             <TextView
-                android:id="@+id/txtCallDuration"
+                android:id="@+id/txtCallTimeInstant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="duration"
+
                 android:textSize="@dimen/_11sdp"
                 android:textColor="@color/colorBlackDim"/>
             <TextView
@@ -68,7 +68,7 @@
                 android:textSize="@dimen/_11sdp"
                 android:textColor="@color/colorBlackDim"
                 android:layout_alignParentRight="true"
-                android:layout_alignBaseline="@+id/txtStatus"/>
+                android:layout_alignBaseline="@+id/txtCallDate"/>
 
         </RelativeLayout>
 
