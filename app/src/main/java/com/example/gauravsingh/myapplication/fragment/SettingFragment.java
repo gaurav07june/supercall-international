@@ -84,6 +84,10 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
         binding.imgTellFriends.setOnClickListener(this);
         binding.imgContact.setOnClickListener(this);
         binding.txtFreeCall.setOnClickListener(this);
+        binding.rltlayAccessSetting.setOnClickListener(this);
+        binding.rltlayTellFriend.setOnClickListener(this);
+        binding.rltlayContactUs.setOnClickListener(this);
+        binding.rltlayCustomerService.setOnClickListener(this);
     }
 
     private void setView(){
@@ -116,39 +120,58 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.imgTellFriends:
                 /*TODO format the mail content*/
-                Intent share = new Intent(Intent.ACTION_SEND);
-                share.setType("text/plain");
-                share.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
-                String shareContent = getResources().getString(R.string.super_call_share_content);
-                String shareLink = getResources().getString(R.string.super_call_link);
-
-                SpannableString spannableString = new SpannableString(shareContent+shareLink);
-                spannableString.setSpan(new ForegroundColorSpan(Color.RED), 0, shareContent.length(), 0);
-                share.putExtra(Intent.EXTRA_TEXT, spannableString);
-                if (share.resolveActivity(getActivity().getPackageManager()) != null) {
-                    startActivity(Intent.createChooser(share, "Share App"));
-                }else{
-                    Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
-                }
-
+                doTellFriendTask();
                 break;
             case R.id.imgContact:
-
-                Intent mailIntent = new Intent(Intent.ACTION_SENDTO);
-                mailIntent.setData(Uri.parse("mailto:"));
-                String[] addresses = {getResources().getString(R.string.super_call_email)};
-                mailIntent.putExtra(Intent.EXTRA_EMAIL, addresses);
-                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
-                if (mailIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-                    startActivity(mailIntent);
-                }else{
-                    Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
-                }
-
+                doContactUsTask();
                 break;
             case R.id.txtFreeCall:
                 checkPermissionForPhoneCall();
                 break;
+
+            case R.id.rltlay_access_setting:
+                binding.switchAccessSetting.performClick();
+                break;
+            case R.id.rltlay_tell_friend:
+                doTellFriendTask();
+                break;
+            case R.id.rltlay_contact_us:
+                doContactUsTask();
+                break;
+            case R.id.rltlay_customer_service:
+                checkPermissionForPhoneCall();
+                break;
+
+        }
+    }
+
+    private void doContactUsTask() {
+        Intent mailIntent = new Intent(Intent.ACTION_SENDTO);
+        mailIntent.setData(Uri.parse("mailto:"));
+        String[] addresses = {getResources().getString(R.string.super_call_email)};
+        mailIntent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        mailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+        if (mailIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(mailIntent);
+        }else{
+            Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void doTellFriendTask() {
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
+        String shareContent = getResources().getString(R.string.super_call_share_content);
+        String shareLink = getResources().getString(R.string.super_call_link);
+
+        SpannableString spannableString = new SpannableString(shareContent+shareLink);
+        spannableString.setSpan(new ForegroundColorSpan(Color.RED), 0, shareContent.length(), 0);
+        share.putExtra(Intent.EXTRA_TEXT, spannableString);
+        if (share.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(Intent.createChooser(share, "Share App"));
+        }else{
+            Toast.makeText(getActivity(), getResources().getString(R.string.no_app_found_error), Toast.LENGTH_SHORT).show();
         }
     }
 

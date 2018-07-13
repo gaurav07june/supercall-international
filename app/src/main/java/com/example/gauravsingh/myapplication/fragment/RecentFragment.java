@@ -122,7 +122,7 @@ public class RecentFragment extends Fragment implements View.OnClickListener{
 
             // How you want the results sorted in the resulting Cursor
             String sortOrder =
-                    CallSummaryContract.CallEntry.COLUMN_NAME_CONTACT_NAME + " DESC";
+                    CallSummaryContract.CallEntry._ID + " DESC";
 
             Cursor cursor = db.query(
                     CallSummaryContract.CallEntry.TABLE_NAME,   // The table to query
@@ -175,10 +175,10 @@ public class RecentFragment extends Fragment implements View.OnClickListener{
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            StringBuilder demo = new StringBuilder("");
+            /*StringBuilder demo = new StringBuilder("");
             for (CallHistory callHistory : callHistoryArrayList){
                 demo.append(callHistory.getNumber());
-            }
+            }*/
             adapter = new CallHistoryAdapter(callHistoryArrayList, getActivity());
             binding.listCallHistory.setAdapter(adapter);
         }
